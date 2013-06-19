@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @knowledge_piece.title
+%p
+  %b Body:
+  = @knowledge_piece.body
+
+= link_to 'Edit', edit_knowledge_piece_path(@knowledge_piece)
+\|
+= link_to 'Back', knowledge_pieces_path

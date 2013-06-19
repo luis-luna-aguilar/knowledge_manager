@@ -1,0 +1,21 @@
+%h1 Listing knowledge_pieces
+
+%table
+  %tr
+    %th Title
+    %th Body
+    %th
+    %th
+    %th
+
+  - @knowledge_pieces.each do |knowledge_piece|
+    %tr
+      %td= knowledge_piece.title
+      %td= knowledge_piece.body
+      %td= link_to 'Show', knowledge_piece
+      %td= link_to 'Edit', edit_knowledge_piece_path(knowledge_piece)
+      %td= link_to 'Destroy', knowledge_piece, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Knowledge piece', new_knowledge_piece_path
