@@ -1,0 +1,12 @@
+- if notice.present?
+  %p.alert.alert-success.row.flash_message
+    = notice
+- if alert.present?
+  %p.alert.row.flash_message
+    = alert
+- if flash[:error].present?
+  %p.alert.alert-error.row.flash_message
+    = flash[:error]
+- if flash[:info].present?
+  %p.alert.alert-info.row.flash_message
+    = flash[:info]

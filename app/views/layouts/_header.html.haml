@@ -1,0 +1,17 @@
+= image_tag "logo.jpg", id: "site_logo", class: "clearfix"
+
+.navbar
+  .navbar-inner
+    %ul#nav_bar.nav
+      %li{class: "#{params[:controller] == 'home' ? 'active' : ''}"}
+        = link_to "Home", root_path
+      %li.divider-vertical
+      %li{class: "#{params[:controller] == 'articles' ? 'active' : ''}"}
+        = link_to "Articles", articles_path
+      %li.divider-vertical
+      %li{class: "#{params[:controller] == 'knowledge_pieces' ? 'active' : ''}"}
+        = link_to "Knowledge Pieces", knowledge_pieces_path
+      %li.divider-vertical
+      %li{class: "#{params[:controller] == 'tags' ? 'active' : ''}"}
+        = link_to "Tags", tags_path
+      %li.divider-vertical

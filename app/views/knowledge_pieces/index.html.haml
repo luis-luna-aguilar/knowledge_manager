@@ -1,6 +1,4 @@
-%h1 Listing knowledge_pieces
-
-%table
+%table.index_table
   %tr
     %th Title
     %th Body
@@ -12,10 +10,10 @@
     %tr
       %td= knowledge_piece.title
       %td= knowledge_piece.body
-      %td= link_to 'Show', knowledge_piece
-      %td= link_to 'Edit', edit_knowledge_piece_path(knowledge_piece)
-      %td= link_to 'Destroy', knowledge_piece, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Show', knowledge_piece, class: "btn"
+      %td= link_to 'Edit', edit_knowledge_piece_path(knowledge_piece), class: "btn"
+      %td= link_to 'Destroy', knowledge_piece, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn"
 
 %br
 
-= link_to 'New Knowledge piece', new_knowledge_piece_path
+= link_to 'New Knowledge Piece', new_knowledge_piece_path, class: "btn"

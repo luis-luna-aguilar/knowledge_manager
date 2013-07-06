@@ -6,8 +6,8 @@
         - @tag.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .field.controls
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, class: "span12"
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: "btn btn-success"
