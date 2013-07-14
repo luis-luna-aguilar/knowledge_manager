@@ -14,6 +14,7 @@
     = f.text_area :body, rows: 10, class: "span12"
   .field.controls
     = f.label :tags_list
-    = f.text_field :tags_list, class: "span12"
+    = render '/shared/tags_field', knowledge_piece: @knowledge_piece
+    = hidden_field(:knowledge_piece, :tags_list)
   .actions
     = f.submit 'Save', class: "btn btn-success"

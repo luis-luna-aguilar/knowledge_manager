@@ -1,17 +1,28 @@
+- content_for :title do
+  Tags
+
+- content_for :description do
+  This is the tags list.
+
+- content_for :sidebar do
+  = render "/tags/filters"
+
 %table.index_table
   %tr
     %th Name
-    %th
-    %th
-    %th
+    %th.show-column
+    %th.edit-column
+    %th.destroy-column
 
   - @tags.each do |tag|
     %tr
-      %td= tag.name
-      %td= link_to 'Show', tag, class: "btn"
-      %td= link_to 'Edit', edit_tag_path(tag), class: "btn"
-      %td= link_to 'Destroy', tag, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn"
+      %td
+        = tag.name
+      %td.show-column
+        = link_to 'Show', tag, class: "btn index-table-action"
+      %td.edit-column
+        = link_to 'Edit', edit_tag_path(tag), class: "btn index-table-action"
+      %td.destroy-column
+        = link_to 'Destroy', tag, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger index-table-action"
 
-%br
-
-= link_to 'New Tag', new_tag_path, class: "btn btn-danger", :data => { :confirm => 'This will only create root tags. Do you want to continue?' }
+= link_to 'New Tag', new_tag_path, class: "btn"

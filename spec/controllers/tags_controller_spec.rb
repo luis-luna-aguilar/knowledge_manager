@@ -20,6 +20,10 @@ require 'spec_helper'
 
 describe TagsController do
 
+  before do
+    Tag.destroy_all
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Tag. As you add validations to Tag, be sure to
   # adjust the attributes here as well.
@@ -62,6 +66,7 @@ describe TagsController do
   end
 
   describe "POST create" do
+
     describe "with valid params" do
       it "creates a new Tag" do
         expect {
@@ -96,9 +101,11 @@ describe TagsController do
         response.should render_template("new")
       end
     end
+
   end
 
   describe "PUT update" do
+    
     describe "with valid params" do
       it "updates the requested tag" do
         tag = Tag.create! valid_attributes
@@ -119,7 +126,7 @@ describe TagsController do
       it "redirects to the tag" do
         tag = Tag.create! valid_attributes
         put :update, {:id => tag.to_param, :tag => valid_attributes}, valid_session
-        response.should redirect_to(tag)
+        response.should redirect_to(tags_path)
       end
     end
 
@@ -140,6 +147,7 @@ describe TagsController do
         response.should render_template("edit")
       end
     end
+    
   end
 
   describe "DELETE destroy" do

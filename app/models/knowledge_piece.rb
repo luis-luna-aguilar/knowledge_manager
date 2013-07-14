@@ -3,7 +3,7 @@ class KnowledgePiece < ActiveRecord::Base
   has_and_belongs_to_many :tags
   
   attr_accessible :body, :title, :tags_list
-  validates_presence_of :body, :title, :tags_list
+  validates_presence_of :body, :title
 
   def tags_list
     list = tags.inject(""){|list, name| list + "name,"}

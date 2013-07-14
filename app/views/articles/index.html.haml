@@ -1,19 +1,31 @@
+- content_for :title do
+  Articles
+
+- content_for :description do
+  This is the articles list.
+
+- content_for :sidebar do
+  = render "/articles/filters"
+
 %table.index_table
   %tr
     %th Title
     %th Reference url
-    %th
-    %th
-    %th
+    %th.show-column
+    %th.edit-column
+    %th.destroy-column
 
   - @articles.each do |article|
     %tr
-      %td= article.title
-      %td= article.reference_url
-      %td= link_to 'Show', article, class: "btn"
-      %td= link_to 'Edit', edit_article_path(article), class: "btn"
-      %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn"
-
-%br
+      %td
+        = article.title
+      %td
+        = article.reference_url
+      %td.show-column
+        = link_to 'Show', article, class: "btn index-table-action"
+      %td.edit-column
+        = link_to 'Edit', edit_article_path(article), class: "btn index-table-action"
+      %td.destroy-column
+        = link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger index-table-action"
 
 = link_to 'New Article', new_article_path, class: "btn"

@@ -3,8 +3,8 @@
 .navbar
   .navbar-inner
     %ul#nav_bar.nav
-      %li{class: "#{params[:controller] == 'home' ? 'active' : ''}"}
-        = link_to "Home", root_path
+      %li{class: "#{params[:controller] == 'searches' ? 'active' : ''}"}
+        = link_to "Search", root_path
       %li.divider-vertical
       %li{class: "#{params[:controller] == 'articles' ? 'active' : ''}"}
         = link_to "Articles", articles_path

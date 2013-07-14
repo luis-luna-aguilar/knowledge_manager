@@ -20,6 +20,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -66,3 +67,5 @@ gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri
 
 gem "ancestry"
 gem 'pry-rails', :group => [:development, :test]
+gem 'pry-rescue', :group => [:development, :test]
+gem 'pry-stack_explorer', :group => [:development, :test]

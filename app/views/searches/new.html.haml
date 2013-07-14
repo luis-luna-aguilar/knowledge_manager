@@ -1,0 +1,23 @@
+- content_for :title do
+  Search
+
+- content_for :description do
+  This is the search form.
+
+- content_for :sidebar do
+  = render "/layouts/sidebar/knowledge_tree"
+
+= form_for @search do |f|
+  .field.controls
+    = f.text_field :keywords
+    = f.submit "Go!", class: "btn btn-success"
+  .field.controls
+    = radio_button("search", "element", "knowledge piece", {checked: "checked"})
+    %span.radio_label knowledge piece
+    = radio_button("search", "element", "article")
+    %span.radio_label article
+    %span.separator ||
+    = radio_button("search", "method", "by title & content", {checked: "checked"})
+    %span.radio_label by title & content
+    = radio_button("search", "method", "by tags")
+    %span.radio_label.last by tags

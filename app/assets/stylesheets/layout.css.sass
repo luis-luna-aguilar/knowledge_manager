@@ -1,5 +1,10 @@
 body
   header
+    .alert
+      text-align: center
+      margin: 10px 0px
+      padding: 8px 0px
+
     img
       margin: 20px 0px
       
@@ -9,8 +14,23 @@ body
       .navbar-inner
         padding-left: 0px
 
+        li.active a
+          color: $black
+
+          &:hover
+            color: $black
+
         .divider-vertical
           margin: 0px
   
   footer
     margin: 30px 0px
+
+  #sidebar
+
+    #knowledge_tree, .side_filters
+      background-color: $gray
+      color: $dark_gray
+      border-color: $dark_gray
+      @include border_radius(5px)
+      padding: 10px

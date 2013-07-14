@@ -1,19 +1,28 @@
+- content_for :title do
+  Knowledge Pieces
+
+- content_for :description do
+  This is the knowledge pieces list.
+
+- content_for :sidebar do
+  = render "/knowledge_pieces/filters"
+
 %table.index_table
   %tr
     %th Title
-    %th Body
-    %th
-    %th
-    %th
+    %th.show-column
+    %th.edit-column
+    %th.destroy-column
 
   - @knowledge_pieces.each do |knowledge_piece|
     %tr
-      %td= knowledge_piece.title
-      %td= knowledge_piece.body
-      %td= link_to 'Show', knowledge_piece, class: "btn"
-      %td= link_to 'Edit', edit_knowledge_piece_path(knowledge_piece), class: "btn"
-      %td= link_to 'Destroy', knowledge_piece, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn"
-
-%br
+      %td
+        = knowledge_piece.title
+      %td.show-column
+        = link_to 'Show', knowledge_piece, class: "btn index-table-action"
+      %td.edit-column
+        = link_to 'Edit', edit_knowledge_piece_path(knowledge_piece), class: "btn index-table-action"
+      %td.destroy-column
+        = link_to 'Destroy', knowledge_piece, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger index-table-action"
 
 = link_to 'New Knowledge Piece', new_knowledge_piece_path, class: "btn"
