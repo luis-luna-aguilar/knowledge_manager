@@ -18,3 +18,4 @@
 //
 //= require tag-it.js
 //= require jquery.nested-fields
+//= require jquery.jstree.js

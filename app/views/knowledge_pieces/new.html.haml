@@ -1,3 +1,9 @@
+- content_for :title do
+  New Knowledge Piece
+
+- content_for :sidebar do
+  = render "/shared/knowledge_tree"
+
 %h1 New Knowledge Piece
 
 = render 'form'

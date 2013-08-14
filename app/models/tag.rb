@@ -34,6 +34,16 @@ class Tag < ActiveRecord::Base
     (where(name: node_name).all.select {|tag| tag.unique_name == name}).first
   end
 
+  def to_knowledge_hash(opened=false)
+    {
+      :data => name,
+      :attr => { :id => "tag-#{id}" },
+      :state => "#{opened ? 'open' : 'closed'}",
+      :icon => "folder",
+      :children => children.map {|child| child.to_knowledge_tree_json}
+    }
+  end
+
   private
 
     def self.is_existent_unique_name?(name)
