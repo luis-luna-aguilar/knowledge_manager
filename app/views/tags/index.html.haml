@@ -9,7 +9,7 @@
 
 %table.index_table
   %tr
-    %th Name
+    %th= sort_link(@search, :name, "Name")
     %th.show-column
     %th.edit-column
     %th.destroy-column
@@ -17,9 +17,9 @@
   - @tags.each do |tag|
     %tr
       %td
-        = tag.name
-      %td.show-column
-        = link_to 'Show', tag, class: "btn index-table-action"
+        = tag.unique_name
+      %td.show-column.long
+        = link_to 'View related content', tag, class: "btn index-table-action"
       %td.edit-column
         = link_to 'Edit', edit_tag_path(tag), class: "btn index-table-action"
       %td.destroy-column

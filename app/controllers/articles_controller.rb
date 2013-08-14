@@ -2,7 +2,8 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @search = Article.search(params[:q])
+    @articles = @search.result
 
     respond_to do |format|
       format.html # index.html.erb

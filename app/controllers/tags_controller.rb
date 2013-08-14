@@ -3,7 +3,8 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.all
+    @search = Tag.search(params[:q])
+    @tags = @search.result
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,7 +46,7 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       if @tag.save
-        format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
+        format.html { redirect_to tags_path, notice: 'Tag was successfully created.' }
         format.json { render json: @tag, status: :created, location: @tag }
       else
         format.html { render action: "new" }

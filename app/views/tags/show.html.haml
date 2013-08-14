@@ -1,5 +1,19 @@
-%p
-  %b Name:
+- content_for :title do
+  Tag
+
+%h1
   = @tag.name
 
-= link_to 'Edit', edit_tag_path(@tag), class: "btn"
+- if @tag.articles.present?
+  %h2 Articles
+  %ul
+    - @tag.articles.each do |article|
+      %li
+        = link_to article.title, article
+
+- if @tag.knowledge_pieces.present?
+  %h2 Knowledge Pieces
+  %ul
+    - @tag.knowledge_pieces.each do |knowledge_piece|
+      %li
+        = link_to knowledge_piece.title, knowledge_piece

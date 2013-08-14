@@ -1,8 +1,10 @@
 class KnowledgePiecesController < ApplicationController
+  
   # GET /knowledge_pieces
   # GET /knowledge_pieces.json
   def index
-    @knowledge_pieces = KnowledgePiece.all
+    @search = KnowledgePiece.search(params[:q])
+    @knowledge_pieces = @search.result
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,7 +43,7 @@ class KnowledgePiecesController < ApplicationController
   # POST /knowledge_pieces.json
   def create
     @knowledge_piece = KnowledgePiece.new(params[:knowledge_piece])
-
+    
     respond_to do |format|
       if @knowledge_piece.save
         format.html { redirect_to @knowledge_piece, notice: 'Knowledge piece was successfully created.' }
@@ -57,7 +59,7 @@ class KnowledgePiecesController < ApplicationController
   # PUT /knowledge_pieces/1.json
   def update
     @knowledge_piece = KnowledgePiece.find(params[:id])
-
+    
     respond_to do |format|
       if @knowledge_piece.update_attributes(params[:knowledge_piece])
         format.html { redirect_to @knowledge_piece, notice: 'Knowledge piece was successfully updated.' }

@@ -1,0 +1,17 @@
+%h2 Knowledge Pieces
+
+.items.dynamic_nested_fields
+  = f.nested_fields_for :knowledge_pieces do |f|
+    
+    %fieldset.item
+      = f.label :title
+      = f.text_field :title, class: "span12"
+      = f.label :body
+      = f.text_area :body, rows: 10, class: "span12"
+      %a.remove{:href => "#"} remove
+      = f.hidden_field :id
+      = f.hidden_field :_destroy
+
+%br
+
+%a.add{:href => "#"} add knowledge piece

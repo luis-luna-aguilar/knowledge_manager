@@ -82,7 +82,7 @@ describe TagsController do
 
       it "redirects to the created tag" do
         post :create, {:tag => valid_attributes}, valid_session
-        response.should redirect_to(Tag.last)
+        response.should redirect_to(tags_path)
       end
     end
 

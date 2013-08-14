@@ -32,6 +32,8 @@ GEM
     ancestry (2.0.0)
       activerecord (>= 3.0.0)
     arel (3.0.2)
+    awesome_nested_fields (0.6.4)
+      rails (>= 3.0.0)
     bcrypt-ruby (3.0.1)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
@@ -152,6 +154,8 @@ GEM
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
     pg (0.15.1)
+    polyamorous (0.6.3)
+      activerecord (>= 3.0)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -191,6 +195,10 @@ GEM
       thor (>= 0.14.6, < 2.0)
     raindrops (0.11.0)
     rake (10.0.4)
+    ransack (1.0.0)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      polyamorous (~> 0.6.0)
     rb-fchange (0.0.6)
       ffi
     rb-fsevent (0.9.3)
@@ -224,6 +232,8 @@ GEM
       sass (>= 3.1.10)
       tilt (~> 1.3)
     sexp_processor (4.2.1)
+    shoulda-matchers (2.2.0)
+      activesupport (>= 3.0.0)
     simple_form (2.1.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -256,6 +266,7 @@ PLATFORMS
 
 DEPENDENCIES
   ancestry
+  awesome_nested_fields
   better_errors (>= 0.7.2)
   binding_of_caller (>= 0.7.1)
   bootstrap-sass (>= 2.3.0.0)
@@ -283,12 +294,14 @@ DEPENDENCIES
   pry-stack_explorer
   quiet_assets (>= 1.0.2)
   rails (= 3.2.13)
+  ransack
   rb-fchange (>= 0.0.6)
   rb-fsevent (>= 0.9.3)
   rb-inotify (>= 0.9.0)
   rolify (>= 3.2.0)
   rspec-rails (>= 2.12.2)
   sass-rails (~> 3.2.3)
+  shoulda-matchers
   simple_form (>= 2.1.0)
   uglifier (>= 1.0.3)
   unicorn (>= 4.3.1)

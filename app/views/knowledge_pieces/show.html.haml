@@ -1,12 +1,18 @@
-%p#notice= notice
-
-%p
-  %b Title:
+%h1
   = @knowledge_piece.title
-%p
-  %b Body:
+
+%br
+
+%p.knowledge_piece
   = @knowledge_piece.body
+%p
+  %b
+    Tags:
+  %span
+    = @knowledge_piece.tags_list
+
+%br
 
 = link_to 'Edit', edit_knowledge_piece_path(@knowledge_piece)
 \|
-= link_to 'Back', knowledge_pieces_path
+= link_to 'List', knowledge_pieces_path

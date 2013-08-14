@@ -1,0 +1,5 @@
+This is the development log for the Knowledge Manager App. It keeps record of the last thing done, and the status, so is easier to come back to the project.
+
+Date: 08-09-2013
+Last Section Worked:
+Description: 

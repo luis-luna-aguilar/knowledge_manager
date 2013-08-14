@@ -1,43 +1,90 @@
-.index_table
-  text-align: left
-  margin-top: 10px
-  width: 100%
-  margin-bottom: 30px
+body
 
-  tr
-    border-bottom: 1px solid $gray
-    height: 37px
+  h1
+    font-size: 26px
 
-    .index-table-action
-      font-size: 12px
-      padding: 2px 6px
+  h2
+    font-size: 18px
 
-    .show-column
-      width: 55px
-    .edit-column
-      width: 40px
-    .destroy-column
-      width: 60px
+  h3
+    font-size: 14px
 
-form
-  margin-top: 20px
+  p.flash_message
+    margin-top: 15px
 
-  .field
-    label
-      font-weight: bold
+  .hidden
+    display: none !important
 
-  .actions
-    text-align: right
+  p.knowledge_piece
+    background-color: $light_yellow
+    border: solid 1px $yellow
+    padding: 20px
+    @include border-radius(10px)
+
+  .index_table
+    text-align: left
+    margin-top: 10px
+    width: 100%
+    margin-bottom: 30px
+
+    tr
+      border-bottom: 1px solid $gray
+      height: 37px
+
+      .index-table-action
+        font-size: 12px
+        padding: 2px 6px
+
+      .show-column
+        width: 55px
+      .show-column.long
+        width: 125px
+      .edit-column
+        width: 40px
+      .destroy-column
+        width: 60px
+
+  form
     margin-top: 20px
 
-  input[type='text'], textarea
-    color: $black
+    .items.dynamic_nested_fields
+      label
+        font-weight: bold
 
-  #tags_list_field 
-    border-color: rgb(204,204,204)
+      fieldset.item
+        margin-bottom: 20px
 
-    li
-      span, input
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
-        color: $black
+    #error_explanation
+      margin-bottom: 20px
+
+      h2
         font-size: 14px
+        color: red
+
+      ul li
+        color: red
+
+    .field
+      label
+        font-weight: bold
+
+    .actions
+      text-align: right
+      margin-top: 20px
+
+    input[type='text'], textarea
+      color: $black
+
+    p.hint
+      color: $gray
+      line-height: 6px
+      font-size: 10px
+
+    #tags_list_field 
+      border-color: rgb(204,204,204)
+
+      li
+        span, input
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
+          color: $black
+          font-size: 14px

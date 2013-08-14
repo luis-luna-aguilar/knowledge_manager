@@ -69,3 +69,6 @@ gem "ancestry"
 gem 'pry-rails', :group => [:development, :test]
 gem 'pry-rescue', :group => [:development, :test]
 gem 'pry-stack_explorer', :group => [:development, :test]
+gem "shoulda-matchers", :group => :test
+gem 'ransack'
+gem 'awesome_nested_fields'
