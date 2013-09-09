@@ -9,8 +9,8 @@
 
 %table.index_table
   %tr
-    %th Title
-    %th Reference url
+    %th= sort_link(@search, :title, "Title")
+    %th= sort_link(@search, :reference_url, "URL")
     %th.show-column
     %th.edit-column
     %th.destroy-column
@@ -20,7 +20,7 @@
       %td
         = article.title
       %td
-        = article.reference_url
+        = link_to "View original", article.reference_url, target: "_blank"
       %td.show-column
         = link_to 'Show', article, class: "btn index-table-action"
       %td.edit-column

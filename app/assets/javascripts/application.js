@@ -13,9 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
-//= require bootstrap
-//= require_tree .
-//
-//= require tag-it.js
 //= require jquery.nested-fields
 //= require jquery.jstree.js
+//= require bootstrap
+//= require tag-it.js
+//= require redactor.min.js
+//
+//= require_tree .

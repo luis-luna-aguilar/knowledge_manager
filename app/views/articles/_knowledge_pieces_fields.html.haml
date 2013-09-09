@@ -7,7 +7,9 @@
       = f.label :title
       = f.text_field :title, class: "span12"
       = f.label :body
-      = f.text_area :body, rows: 10, class: "span12"
+      = f.text_area :body, class: "span12 redactor-component"
+      %p.hint= "Use Ctrl+C to add an inline code tags snippet, use Ctrl+P for a multiline one."
+      %br
       %a.remove{:href => "#"} remove
       = f.hidden_field :id
       = f.hidden_field :_destroy

@@ -14,11 +14,11 @@
     = f.text_field :reference_url, class: "span12"
   .field.controls
     = f.label :brief
-    = f.text_area :brief, rows: 10, class: "span12"
+    = f.text_area :brief, rows: 3, class: "span12"
   .field.controls
     = f.label :tags_list
     = render '/shared/tags_field', element: @article
-    = hidden_field(:article, :tags_list)
+    = hidden_field(:article, :tags_list, {class: "tags_list"})
 
   = render "knowledge_pieces_fields", f: f
 

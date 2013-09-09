@@ -7,7 +7,13 @@ class Tag < ActiveRecord::Base
   attr_accessible :name
   validates_presence_of :name
   validate :is_unique_name_at_the_same_tree_level
-  
+
+  def self.find_descendants_by_ancestor_name(name)
+    results = []
+    ancestors_matching_name = Tag.where("name LIKE ?", "%#{name}%").all
+    ancestors_matching_name.each {|ancestor|results << ancestor.descendants}
+    results.flatten.uniq
+  end
 
   def unique_name
     if is_root?

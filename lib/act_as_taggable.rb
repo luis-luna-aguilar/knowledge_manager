@@ -1,7 +1,7 @@
 module ActAsTaggable
 
   def tags_list
-    list = tags.inject(""){|list, tag| list + "#{tag.name},"}
+    list = self.tags.inject(""){|list, tag| list + "#{tag.name},"}
     list.chomp(",")
   end
 
@@ -29,9 +29,9 @@ module ActAsTaggable
     def add_tag(tag_name)
       existent_tag = Tag.find_by_unique_name(tag_name)
       if existent_tag.present?
-        tags << existent_tag
+        self.tags << existent_tag
       else
-        tags << TagBuilder.new(tag_name).create!
+        self.tags << TagBuilder.new(tag_name).create!
       end
     end
 

@@ -6,13 +6,16 @@
 
 %br
 
-%p.knowledge_piece
-  = @knowledge_piece.body
+.knowledge_piece
+  = raw @knowledge_piece.body.html_safe
+
 %p
   %b
     Tags:
-  %span
-    = @knowledge_piece.tags_list
+  - if @knowledge_piece.tags.present?
+    = raw generate_tag_links(@knowledge_piece.tags)
+  - else
+    = "No tags assigned"
 
 %br
 

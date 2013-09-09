@@ -1,5 +1,9 @@
 This is the development log for the Knowledge Manager App. It keeps record of the last thing done, and the status, so is easier to come back to the project.
 
+Date: 08-16-2013
+Last Section Worked: Redactor
+Description: I was installing and modifiying Redactor so that it supports code and I use it for the knowledge pieces, and looks the way it has to.
+
 Date: 08-14-2013
 Last Section Worked: tag.rb, tag_spec.rb
 Method: to_knowledge hash

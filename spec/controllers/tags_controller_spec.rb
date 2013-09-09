@@ -40,6 +40,22 @@ describe TagsController do
       get :index, {}, valid_session
       assigns(:tags).should eq([tag])
     end
+
+    it "assigns tags filtered by name as @tags" do
+      TagBuilder.new("root").create!
+      tag_1 = TagBuilder.new("root:child-1").create!
+      tag_2 = TagBuilder.new("root:child-2").create!
+      get :index, {:q => {:name_cont => "child"}}, valid_session
+      assigns(:tags).should eq([tag_1, tag_2])
+    end
+
+    it "assigns tags filtered by ancestor name as @tags" do
+      TagBuilder.new("root").create!
+      tag_1 = TagBuilder.new("root:child-1").create!
+      tag_2 = TagBuilder.new("root:child-2").create!
+      get :index, {:q => {:ancestors_name_cont => "root"}}, valid_session
+      assigns(:tags).should eq([tag_1, tag_2])
+    end
   end
 
   describe "GET show" do
@@ -96,7 +112,7 @@ describe TagsController do
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Tag.any_instance.stub(:save).and_return(false)
+        Tag.any_instance.stub(:valid?).and_return(false)
         post :create, {:tag => { "name" => "invalid value" }}, valid_session
         response.should render_template("new")
       end

@@ -4,4 +4,8 @@
     .field
       = f.label :name_cont, "Name contains"
       = f.text_field :name_cont
-    .actions= f.submit "Filter", class: "btn"
+    .field
+      = label_tag :q_ancestors_name_cont, "Ancestor Name contains"
+      = text_field_tag "q[ancestors_name_cont]", @search_by_ancestors_name_field_value
+    .actions
+      = f.submit "Filter", class: "btn"

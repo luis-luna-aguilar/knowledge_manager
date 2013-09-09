@@ -17,3 +17,6 @@
     - @tag.knowledge_pieces.each do |knowledge_piece|
       %li
         = link_to knowledge_piece.title, knowledge_piece
+
+- if @tag.articles.blank? && @tag.knowledge_pieces.blank?
+  There's no content related to this tag.

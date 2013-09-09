@@ -1,10 +1,12 @@
 class TagsController < ApplicationController
 
+  before_filter :search_by_ancestors_name, only: :index
+
   # GET /tags
   # GET /tags.json
   def index
     @search = Tag.search(params[:q])
-    @tags = @search.result
+    @tags = filtered_tags 
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,10 +44,10 @@ class TagsController < ApplicationController
   # POST /tags
   # POST /tags.json
   def create
-    @tag = Tag.new(params[:tag])
+    @tag = TagBuilder.new(params[:tag][:name]).create!
 
     respond_to do |format|
-      if @tag.save
+      if @tag.valid?
         format.html { redirect_to tags_path, notice: 'Tag was successfully created.' }
         format.json { render json: @tag, status: :created, location: @tag }
       else
@@ -86,5 +88,25 @@ class TagsController < ApplicationController
   def unique_names
     render json: Tag.all.map(&:unique_name).as_json
   end
+
+  private
+
+    def search_by_ancestors_name
+      if params[:q] && params[:q][:ancestors_name_cont].present?
+        ancestors_name = params[:q].delete(:ancestors_name_cont)
+        @search_by_ancestors_name_results = Tag.find_descendants_by_ancestor_name(ancestors_name)
+        @search_by_ancestors_name_field_value = ancestors_name
+      else
+        @search_by_ancestors_name_field_value = ""
+      end
+    end
+
+    def filtered_tags
+      if @search_by_ancestors_name_results.present?
+        @search.result & @search_by_ancestors_name_results
+      else
+        @search.result
+      end
+    end
 
 end

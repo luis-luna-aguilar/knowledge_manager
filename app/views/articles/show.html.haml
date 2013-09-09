@@ -1,12 +1,29 @@
-%p#notice= notice
+- content_for :title do
+  Article
+
+%h1
+  = @article.title
 
 %p
-  %b Title:
-  = @article.title
+  %b Brief:
+  = @article.brief
+
+%p
+  %b
+    Tags:
+  = raw generate_tag_links(@article.tags)
+
 %p
   %b Reference url:
-  = @article.reference_url
+  = link_to @article.reference_url, @article.reference_url, target: "_blank"
+
+%br
+
+- @article.knowledge_pieces.each do |kp|
+  .knowledge_piece
+    = raw kp.body.html_safe
+  %br
 
 = link_to 'Edit', edit_article_path(@article)
 \|
-= link_to 'Back', articles_path
+= link_to 'List', articles_path

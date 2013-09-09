@@ -40,6 +40,21 @@ describe Tag do
 
   end
 
+  it "should find descendants name from the name contained in any ancestor" do
+    Tag.destroy_all
+    
+    Tag.create(name: "root")
+    Tag.create(name: "rootlings")
+
+    tag_1 = TagBuilder.new("root:child-1").create!
+    tag_2 = TagBuilder.new("child-1:child-2").create!
+    tag_3 = TagBuilder.new("rootlings:child-3").create!
+    tag_4 = TagBuilder.new("child-3:child-4").create!
+    expected_result = [tag_1, tag_2, tag_3, tag_4]
+
+    Tag.find_descendants_by_ancestor_name("root").should == expected_result
+  end
+
   it "should return the closest unique ancestor" do
     Tag.destroy_all
     
@@ -60,20 +75,22 @@ describe Tag do
       Tag.destroy_all
     end
 
-    it "should give me a 1 level name if is a root tag" do
+    it "should create a root tag with a 1 level name" do
       tag = Tag.create(name: "root")
       tag.unique_name.should == "root"
     end
 
-    it "should give me a 2 levels name if its parent is unique" do
+    it "should create a child tag with a 2 levels name, if given parent is unique" do
       Tag.create(name: "root")
       TagBuilder.new("root:1st_lvl_1").create!
       tag = TagBuilder.new("1st_lvl_1:2nd_lvl_1").create!
 
       tag.unique_name.should == "1st_lvl_1:2nd_lvl_1"
+      tag.parent.name.should == "1st_lvl_1"
+      tag.parent.parent.name.should == "root"
     end
 
-    it "should give me a 3 levels name  its parent is not unique" do
+    it "should create a grandchild tag with a 3 levels name, if given parent is not unique" do
       Tag.create(name: "root")
       TagBuilder.new("root:1st_lvl_1").create!
       TagBuilder.new("root:1st_lvl_2").create!
@@ -83,6 +100,9 @@ describe Tag do
 
       tag = TagBuilder.new("1st_lvl_2:2nd_lvl_1:test_tag").create!
       tag.unique_name.should == "1st_lvl_2:2nd_lvl_1:test_tag"
+      tag.parent.name.should == "2nd_lvl_1"
+      tag.parent.parent.name.should == "1st_lvl_2"
+      tag.parent.parent.parent.name.should == "root"
     end
 
     it "should find a tag by it's unique name" do
