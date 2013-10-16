@@ -13,16 +13,22 @@
     Tags:
   = raw generate_tag_links(@article.tags)
 
-%p
-  %b Reference url:
-  = link_to @article.reference_url, @article.reference_url, target: "_blank"
+- if @article.references.present?
+  %p
+    %b References:
+
+  %ul
+    - @article.references.each do |reference|
+      %li
+        = link_to reference.url, reference.url, target: "_blank"
 
 %br
 
-- @article.knowledge_pieces.each do |kp|
+- @article.knowledge_pieces.reverse.each do |kp|
+  %h2
+    = kp.title
   .knowledge_piece
     = raw kp.body.html_safe
-  %br
 
 = link_to 'Edit', edit_article_path(@article)
 \|

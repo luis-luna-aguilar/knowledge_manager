@@ -11,13 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130706043651) do
+ActiveRecord::Schema.define(:version => 20131007055706) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
-    t.string   "reference_url"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.text     "brief"
   end
 
@@ -47,6 +46,14 @@ ActiveRecord::Schema.define(:version => 20130706043651) do
   end
 
   add_index "knowledge_pieces_tags", ["knowledge_piece_id", "tag_id"], :name => "index_knowledge_pieces_tags_on_knowledge_piece_id_and_tag_id"
+
+  create_table "references", :force => true do |t|
+    t.string   "url"
+    t.integer  "referenceable_id"
+    t.string   "referenceable_type"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "tags", :force => true do |t|
     t.string   "name"

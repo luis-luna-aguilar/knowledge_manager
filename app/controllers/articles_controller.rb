@@ -27,6 +27,8 @@ class ArticlesController < ApplicationController
   # GET /articles/new.json
   def new
     @article = Article.new
+    @article.references << Reference.new
+    @article.knowledge_pieces << KnowledgePiece.new
 
     respond_to do |format|
       format.html # new.html.erb

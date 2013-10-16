@@ -1,4 +1,5 @@
 = form_for @article do |f|
+
   - if @article.errors.any?
     #error_explanation
       %h2= "#{pluralize(@article.errors.count, "error")} prohibited this article from being saved:"
@@ -9,12 +10,13 @@
   .field.controls
     = f.label :title
     = f.text_field :title, class: "span12"
-  .field.controls
-    = f.label :reference_url
-    = f.text_field :reference_url, class: "span12"
+  
+  = render "references_fields", f: f
+
   .field.controls
     = f.label :brief
     = f.text_area :brief, rows: 3, class: "span12"
+  
   .field.controls
     = f.label :tags_list
     = render '/shared/tags_field', element: @article
